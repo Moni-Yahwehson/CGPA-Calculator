@@ -1,5 +1,13 @@
+import Logo from "./Logo";
+import MainNav from "./MainNav";
+
 function Sidebar() {
-  return <div></div>;
+  return (
+    <div>
+      <Logo />
+      <MainNav />
+    </div>
+  );
 }
 
 export default Sidebar;
