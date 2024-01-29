@@ -1,6 +1,6 @@
 import { useState } from "react";
-
-/* eslint-disable no-unused-vars */
+import CourseForm from "../components/features/CourseForm";
+import CourseList from "../components/features/CourseList";
 const grades = {
   A: 5,
   B: 4,
@@ -10,38 +10,27 @@ const grades = {
   F: 0,
 };
 
-function CalculateCGPA() {
+const CGPACalculator = () => {
   const [courses, setCourses] = useState([]);
 
-  //Adding a course
-  function handleAddCourse(newCourse) {
+  const handleAddCourse = (newCourse) => {
     setCourses([...courses, newCourse]);
-  }
+  };
 
-  //Editing a course
-  function handleEditCourse(index, updatedCourse) {
-    const updatedCourses = [...courses];
-    updatedCourses[index] = updatedCourse;
-    setCourses(updatedCourses);
-  }
-
-  //Deleting a course
-
-  function handleDeleteCourse(index) {
+  const handleDeleteCourse = (index) => {
     const updatedCourses = courses.filter((course, i) => i !== index);
     setCourses(updatedCourses);
-  }
-
-  //Calculating the CGPA
-
-  const calculateGPA = function () {
-    let totalGradePoints = 0;
-    let totalCredits = 0;
-
-    courses.forEach((course) =>{
-      totalGradePoints += grades[course.grade] * course.
-    })
   };
-}
 
-export default CalculateCGPA;
+  const calculateCGPA = () => {
+    let totalGrades = 0;
+    let totalCredit = 0;
+
+    courses.forEach((course) => {
+      totalGrades += grades[course.grade] * course.credits;
+      totalCredit += course.credits;
+    });
+
+    return totalCredit === 0 ? 0 : totalGrades / totalCredit;
+  };
+};
