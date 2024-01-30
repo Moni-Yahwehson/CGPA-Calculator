@@ -33,4 +33,15 @@ const CGPACalculator = () => {
 
     return totalCredit === 0 ? 0 : totalGrades / totalCredit;
   };
+  return (
+    <div className="container">
+      <h1 className="text-center">Calculate CGPA</h1>
+      <CourseForm handleAddCourse={handleAddCourse} />
+      <CourseList courses={courses} handleDeleteCourse={handleDeleteCourse} />
+      <h2 className="text-center">CGPA: {calculateCGPA()}</h2>
+      <p>Welcome</p>
+    </div>
+  );
 };
+
+export default CGPACalculator;
